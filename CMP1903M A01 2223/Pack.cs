@@ -13,9 +13,12 @@ namespace CMP1903M_A01_2223
         public Pack()
         {
             //Initialise the card pack here
-            for(int i = 0; i < 52; i++)
+            for(int s = 1; s < 5; s++)
             {
-                pack.Add(new Card(0,0));
+                for (int v = 1; v < 14; v++)
+                {
+                    pack.Add(new Card(v, s));
+                }
             }
         }
 
