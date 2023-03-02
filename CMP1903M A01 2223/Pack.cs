@@ -51,7 +51,17 @@ namespace CMP1903M_A01_2223
         public static List<Card> dealCard(Pack currentPack,int amount)
         {
             //Deals the number of cards specified by 'amount'
-            return new List<Card>();
+
+            List<Card> output = new List<Card>(); //init output
+
+            //calls deal 'amount' times and adds to output
+            for (int i = 0; i < amount; i++)
+            {
+                
+                output.Add(deal(currentPack));
+            }
+            
+            return output;
         }
         
     
