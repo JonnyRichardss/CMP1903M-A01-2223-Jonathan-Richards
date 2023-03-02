@@ -25,6 +25,21 @@ namespace CMP1903M_A01_2223
         public static bool shuffleCardPack(Pack currentPack,int typeOfShuffle)
         {
             //Shuffles the pack based on the type of shuffle
+            switch(typeOfShuffle)
+            {
+                case 1:
+                    currentPack.pack = FYShuffle(currentPack.pack);
+                    break;
+                case 2:
+                    currentPack.pack = RiffleShuffle(currentPack.pack);
+                    break;
+                case 3:
+                    //currentPack.pack = currentPack.pack; dont need to do anything to not shuffle
+                    break;
+                default:
+                    return false;
+
+            }
             return true;
         }
         public static Card deal(Pack currentPack)
@@ -36,6 +51,17 @@ namespace CMP1903M_A01_2223
         {
             //Deals the number of cards specified by 'amount'
             return new List<Card>();
+        }
+        
+    
+        //Private methods - different card shuffles
+        private static List<Card> FYShuffle(List<Card> prevorder)
+        {
+            return prevorder;
+        }
+        private static List<Card> RiffleShuffle(List<Card> prevorder)
+        {
+            return prevorder;
         }
     }
 }
