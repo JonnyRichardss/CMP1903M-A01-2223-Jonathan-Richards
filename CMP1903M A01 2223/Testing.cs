@@ -11,6 +11,7 @@ namespace CMP1903M_A01_2223
         public static void RunTest()
         {
             Pack testPack = new Pack();
+            Pack.shuffleCardPack(testPack, 2);
         }
     }
 }

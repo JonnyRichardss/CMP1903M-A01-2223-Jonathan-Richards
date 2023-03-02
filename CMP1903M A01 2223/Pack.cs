@@ -58,16 +58,25 @@ namespace CMP1903M_A01_2223
         //Private methods - different card shuffles
         private static List<Card> FYShuffle(List<Card> prevorder)
         {
+            //TODO
             return prevorder;
         }
         private static List<Card> RiffleShuffle(List<Card> prevorder)
         {
+            List<Card> output = new List<Card>();
             //I've assumed that this is supposed to be a 'perfect' riffle shuffle (AKA faro / pharaoh shuffle)
 
+            //split deck into two piles
             List<Card> topPile = prevorder.GetRange(0,prevorder.Count()/2);
             List<Card> bottomPile = prevorder.GetRange(prevorder.Count() /2,prevorder.Count/2);
             
-            return prevorder;
+            //reconstruct deck using alternate cards from each pile
+            for (int i =0; i< prevorder.Count / 2; i++)
+            {
+                output.Add(topPile[i]);
+                output.Add(bottomPile[i]);
+            }
+            return output;
         }
     }
 }
