@@ -46,7 +46,9 @@ namespace CMP1903M_A01_2223
         public static Card deal(Pack currentPack)
         {
             //Deals one card
-            return currentPack.pack[0];
+            Card card = currentPack.pack[0];
+            currentPack.pack.Remove(card);
+            return card;
         }
         public static List<Card> dealCard(Pack currentPack,int amount)
         {
