@@ -13,6 +13,10 @@ namespace CMP1903M_A01_2223
         public Pack()
         {
             //Initialise the card pack here
+            for(int i = 0; i < 52; i++)
+            {
+                pack.Add(new Card(0,0));
+            }
         }
 
         public static bool shuffleCardPack(int typeOfShuffle)
@@ -23,7 +27,7 @@ namespace CMP1903M_A01_2223
         public static Card deal()
         {
             //Deals one card
-            return new Card();
+            return new Card(0,0);
         }
         public static List<Card> dealCard(int amount)
         {
