@@ -61,6 +61,11 @@ namespace CMP1903M_A01_2223
         }
         private static List<Card> RiffleShuffle(List<Card> prevorder)
         {
+            //I've assumed that this is supposed to be a 'perfect' riffle shuffle (AKA faro / pharaoh shuffle)
+
+            List<Card> topPile = prevorder.GetRange(0,prevorder.Count()/2);
+            List<Card> bottomPile = prevorder.GetRange(prevorder.Count() /2,prevorder.Count/2);
+            
             return prevorder;
         }
     }
