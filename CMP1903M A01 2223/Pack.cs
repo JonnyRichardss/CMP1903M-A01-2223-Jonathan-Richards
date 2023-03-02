@@ -22,17 +22,17 @@ namespace CMP1903M_A01_2223
             }
         }
 
-        public static bool shuffleCardPack(int typeOfShuffle)
+        public static bool shuffleCardPack(Pack currentPack,int typeOfShuffle)
         {
             //Shuffles the pack based on the type of shuffle
             return true;
         }
-        public static Card deal()
+        public static Card deal(Pack currentPack)
         {
             //Deals one card
-            return new Card(0,0);
+            return currentPack.pack[0];
         }
-        public static List<Card> dealCard(int amount)
+        public static List<Card> dealCard(Pack currentPack,int amount)
         {
             //Deals the number of cards specified by 'amount'
             return new List<Card>();
