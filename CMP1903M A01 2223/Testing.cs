@@ -11,8 +11,11 @@ namespace CMP1903M_A01_2223
         public static void RunTest()
         {
             Pack testPack = new Pack();
-            testPack.shuffleCardPack(2);
-            Console.WriteLine("Shuffled Deck");
+            if (testPack.shuffleCardPack(1))
+            {
+                Console.WriteLine("Shuffled Deck");
+            }
+            
 
             Console.WriteLine("Dealt {0}",testPack.deal());
 

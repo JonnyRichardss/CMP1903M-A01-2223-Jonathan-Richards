@@ -30,10 +30,10 @@ namespace CMP1903M_A01_2223
             switch(typeOfShuffle)
             {
                 case 1:
-                    pack = FYShuffle();
+                    FYShuffle();
                     break;
                 case 2:
-                    pack = RiffleShuffle();
+                    RiffleShuffle();
                     break;
                 case 3:
                     //currentPack.pack = currentPack.pack; dont need to do anything to not shuffle
@@ -66,25 +66,25 @@ namespace CMP1903M_A01_2223
             
             return output;
         }
-        
-    
+
+
         //Private methods - different card shuffles
-        private List<Card> FYShuffle()
+        private void FYShuffle()
         {
-            //TODO
-            //Write down the numbers from 1 through N.
 
-            //Pick a random number k between one and the number of unstruck numbers remaining(inclusive).
+            Random rng = new Random();
+            for (int i = pack.Count - 1; i >= 0; i--)
+            {
+                int j = rng.Next(pack.Count-1);
+                Card currcard = pack[i];
+                Card randomcard = pack[j];
+                pack[i] = randomcard;
+                pack[j] = currcard;
 
-            //Counting from the low end, strike out the kth number not yet struck out, and write it down at the end of a separate list.
-
-            //Repeat from step 2 until all the numbers have been struck out.
-
-            //The sequence of numbers written down in step 3 is now a random permutation of the original numbers.
-            return pack;
+            }
 
         }
-        private  List<Card> RiffleShuffle()
+        private  void RiffleShuffle()
         {
             List<Card> output = new List<Card>();
             //I've assumed that this is supposed to be a 'perfect' riffle shuffle (AKA faro / pharaoh shuffle)
@@ -99,7 +99,7 @@ namespace CMP1903M_A01_2223
                 output.Add(topPile[i]);
                 output.Add(bottomPile[i]);
             }
-            return output;
+            pack = output;
         }
     }
 }
