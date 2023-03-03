@@ -11,14 +11,16 @@ namespace CMP1903M_A01_2223
         public static void RunTest()
         {
             Pack testPack = new Pack();
-            Pack.shuffleCardPack(testPack, 2);
+            testPack.shuffleCardPack(2);
             Console.WriteLine("Shuffled Deck");
-            Console.WriteLine("Dealt {0}",Pack.deal(testPack));
-            foreach (Card c in Pack.dealCard(testPack, 2))
+
+            Console.WriteLine("Dealt {0}",testPack.deal());
+
+            foreach (Card c in testPack.dealCard(2))
             {
                 Console.WriteLine("Dealt {0}", c);
             }
-             
+
         }
     }
 }

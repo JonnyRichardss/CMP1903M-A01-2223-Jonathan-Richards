@@ -23,16 +23,17 @@ namespace CMP1903M_A01_2223
             }
         }
 
-        public static bool shuffleCardPack(Pack currentPack,int typeOfShuffle)
+        
+        public bool shuffleCardPack(int typeOfShuffle)
         {
             //Shuffles the pack based on the type of shuffle
             switch(typeOfShuffle)
             {
                 case 1:
-                    currentPack.pack = FYShuffle(currentPack.pack);
+                    pack = FYShuffle();
                     break;
                 case 2:
-                    currentPack.pack = RiffleShuffle(currentPack.pack);
+                    pack = RiffleShuffle();
                     break;
                 case 3:
                     //currentPack.pack = currentPack.pack; dont need to do anything to not shuffle
@@ -43,14 +44,14 @@ namespace CMP1903M_A01_2223
             }
             return true;
         }
-        public static Card deal(Pack currentPack)
+        public  Card deal()
         {
             //Deals one card
-            Card card = currentPack.pack[0];
-            currentPack.pack.Remove(card);
+            Card card = pack[0];
+            pack.Remove(card);
             return card;
         }
-        public static List<Card> dealCard(Pack currentPack,int amount)
+        public  List<Card> dealCard(int amount)
         {
             //Deals the number of cards specified by 'amount'
 
@@ -60,7 +61,7 @@ namespace CMP1903M_A01_2223
             for (int i = 0; i < amount; i++)
             {
                 
-                output.Add(deal(currentPack));
+                output.Add(deal());
             }
             
             return output;
@@ -68,22 +69,32 @@ namespace CMP1903M_A01_2223
         
     
         //Private methods - different card shuffles
-        private static List<Card> FYShuffle(List<Card> prevorder)
+        private List<Card> FYShuffle()
         {
             //TODO
-            return prevorder;
+            //Write down the numbers from 1 through N.
+
+            //Pick a random number k between one and the number of unstruck numbers remaining(inclusive).
+
+            //Counting from the low end, strike out the kth number not yet struck out, and write it down at the end of a separate list.
+
+            //Repeat from step 2 until all the numbers have been struck out.
+
+            //The sequence of numbers written down in step 3 is now a random permutation of the original numbers.
+            return pack;
+
         }
-        private static List<Card> RiffleShuffle(List<Card> prevorder)
+        private  List<Card> RiffleShuffle()
         {
             List<Card> output = new List<Card>();
             //I've assumed that this is supposed to be a 'perfect' riffle shuffle (AKA faro / pharaoh shuffle)
 
             //split deck into two piles
-            List<Card> topPile = prevorder.GetRange(0,prevorder.Count()/2);
-            List<Card> bottomPile = prevorder.GetRange(prevorder.Count() /2,prevorder.Count/2);
+            List<Card> topPile = pack.GetRange(0,pack.Count()/2);
+            List<Card> bottomPile = pack.GetRange(pack.Count() /2,pack.Count/2);
             
             //reconstruct deck using alternate cards from each pile
-            for (int i =0; i< prevorder.Count / 2; i++)
+            for (int i =0; i< pack.Count / 2; i++)
             {
                 output.Add(topPile[i]);
                 output.Add(bottomPile[i]);
