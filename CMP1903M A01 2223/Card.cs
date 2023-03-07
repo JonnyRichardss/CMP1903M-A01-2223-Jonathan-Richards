@@ -21,7 +21,7 @@ namespace CMP1903M_A01_2223
         }
         public int Suit { 
             get { return _suit; } 
-            set { if (0 < value && value < 5) _suit = value;}
+            set { if (0 <= value && value < 5) _suit = value;}
         }
 
         public Card(int val, int suit)
@@ -52,6 +52,8 @@ namespace CMP1903M_A01_2223
                 case 4:
                     suitString = "spades";
                     break;
+                case 0:
+                    return ("Nothing, end of pack reached!");
             }
             //return card name (human readable)
             return (String.Format("The {0} of {1}.",_value,suitString));

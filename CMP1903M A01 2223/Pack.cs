@@ -8,7 +8,7 @@ namespace CMP1903M_A01_2223
 {
     class Pack
     {
-        List<Card> pack;
+        List<Card> pack; //realising later that instead of un-staticking the methods I should have made this static
 
         public Pack()
         {
@@ -46,10 +46,17 @@ namespace CMP1903M_A01_2223
         }
         public  Card deal()
         {
-            //Deals one card
-            Card card = pack[0];
-            pack.Remove(card);
-            return card;
+            //deals one card
+            if (pack.Count > 0)
+            {
+                Card card = pack[0];
+                pack.Remove(card);
+                return card;
+            }
+            else
+            {
+                throw new PackEmptyException();
+            }
         }
         public  List<Card> dealCard(int amount)
         {
@@ -58,12 +65,19 @@ namespace CMP1903M_A01_2223
             List<Card> output = new List<Card>(); //init output
 
             //calls deal 'amount' times and adds to output
-            for (int i = 0; i < amount; i++)
+            try
             {
-                
-                output.Add(deal());
+
+                for (int i = 0; i < amount; i++)
+                {
+                    output.Add(deal());
+                }
             }
-            
+            catch (PackEmptyException)
+            {
+                output.Add(new Card(0,0));
+            }
+
             return output;
         }
 
