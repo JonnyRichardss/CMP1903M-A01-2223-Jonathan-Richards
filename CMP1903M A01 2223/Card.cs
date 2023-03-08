@@ -6,25 +6,34 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
+    public enum SuitEnum
+    {
+        ERROR = 0,
+        hearts = 1,
+        clubs = 2,
+        diamonds = 3,
+        spades = 4
+    }
     class Card
     {
+     
         //Base for the Card class.
         //Value: numbers 1 - 13
         //Suit: numbers 1 - 4
         //The 'set' methods for these properties could have some validation
         private int _value;
-        private int _suit;
+        private SuitEnum _suit;
         public int Value
         {
             get { return _value; }
             set { if (0 < value && value < 14) _value = value; }
         }
-        public int Suit { 
+        public SuitEnum Suit { 
             get { return _suit; } 
-            set { if (0 <= value && value < 5) _suit = value;}
+            set { if (SuitEnum.ERROR <= value && value <= SuitEnum.spades) _suit = value;}
         }
 
-        public Card(int val, int suit)
+        public Card(int val, SuitEnum suit)
         {
             Value = val;
             Suit = suit;
@@ -33,30 +42,16 @@ namespace CMP1903M_A01_2223
         public override string ToString()
         {
             //initialise string with value that makes it obvious if re-assignment fails
-            string suitString = "ERROR";
 
             //This switch *should* be a real enum that can be used elsewhere but oh well
 
             //assign correct suit text based on the suit the card has
-            switch (_suit)
+            if(Suit == SuitEnum.ERROR)
             {
-                case 1:
-                    suitString = "hearts";
-                    break;
-                case 2:
-                    suitString = "clubs";
-                    break;
-                case 3:
-                    suitString = "diamonds";
-                    break;
-                case 4:
-                    suitString = "spades";
-                    break;
-                case 0:
-                    return ("Nothing, end of pack reached!");
+                return ("Nothing, end of pack reached!");
             }
             //return card name (human readable)
-            return (String.Format("The {0} of {1}.",_value,suitString));
+            return (String.Format("The {0} of {1}.",_value,Suit));
         }
     }
 }

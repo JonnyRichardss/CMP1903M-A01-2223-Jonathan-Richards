@@ -12,7 +12,7 @@ namespace CMP1903M_A01_2223
         {
             Console.WriteLine("STARTING STATIC TEST");
             Pack testPack = new Pack();
-            if (testPack.shuffleCardPack(1))
+            if (testPack.shuffleCardPack((ShuffleType)1))
             {
                 Console.WriteLine("Shuffled Deck");
             }
@@ -41,40 +41,40 @@ namespace CMP1903M_A01_2223
                     switch (menuInt)
                     {
                         case 1:
-                            Console.WriteLine("Shuffle Type: \n1 - Fisher-Yates \n  2 - Riffle \n3 - None");
+                            Console.WriteLine("Shuffle Type: \n1 - Fisher-Yates \n2 - Riffle \n3 - None");
                             input = Console.ReadLine();
                             if (int.TryParse(input, out menuInt))
                             {
                                 switch (menuInt)
                                 {
                                     case 1:
-                                        if (testPack.shuffleCardPack(1))
+                                        if (testPack.shuffleCardPack(ShuffleType.FisherYates))
                                         {
                                             Console.WriteLine("Successfully Fisher-Yates shuffled!");
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Shuffle Failed!");
+                                            Console.WriteLine("Shuffle Failed! Is the pack empty?");
                                         }
                                         continue;
                                     case 2:
-                                        if (testPack.shuffleCardPack(2))
+                                        if (testPack.shuffleCardPack(ShuffleType.Riffle))
                                         {
                                             Console.WriteLine("Successfully Riffle shuffled!");
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Shuffle Failed!");
+                                            Console.WriteLine("Shuffle Failed! Is the pack empty?");
                                         }
                                         continue;
                                     case 3:
-                                        if (testPack.shuffleCardPack(3))
+                                        if (testPack.shuffleCardPack(ShuffleType.None))
                                         {
                                             Console.WriteLine("Successfully done no shuffle!");
                                         }
                                         else
                                         {
-                                            Console.WriteLine("Shuffle Failed!");
+                                            Console.WriteLine("Shuffle Failed! Is the pack empty?");
                                         }
                                         continue;
                                     default:

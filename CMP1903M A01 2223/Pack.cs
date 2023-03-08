@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace CMP1903M_A01_2223
 {
+    public enum ShuffleType
+    {
+        FisherYates = 1,
+        Riffle = 2,
+        None = 3
+    }
     class Pack
     {
         List<Card> pack; //realising later that instead of un-staticking the methods I should have made this static
@@ -18,24 +24,28 @@ namespace CMP1903M_A01_2223
             {
                 for (int v = 1; v < 14; v++)
                 {
-                    pack.Add(new Card(v, s));
+                    pack.Add(new Card(v, (SuitEnum)s));
                 }
             }
         }
 
         
-        public bool shuffleCardPack(int typeOfShuffle)
+        public bool shuffleCardPack(ShuffleType typeOfShuffle)
         {
+            if (pack.Count == 0)
+            {
+                return false;
+            }
             //Shuffles the pack based on the type of shuffle
             switch(typeOfShuffle)
             {
-                case 1:
+                case ShuffleType.FisherYates:
                     FYShuffle();
                     break;
-                case 2:
+                case ShuffleType.Riffle:
                     RiffleShuffle();
                     break;
-                case 3:
+                case ShuffleType.None:
                     //currentPack.pack = currentPack.pack; dont need to do anything to not shuffle
                     break;
                 default:
