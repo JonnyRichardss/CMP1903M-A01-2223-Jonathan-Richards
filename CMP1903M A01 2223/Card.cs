@@ -20,28 +20,27 @@ namespace CMP1903M_A01_2223
         //Base for the Card class.
         //Value: numbers 1 - 13
         //Suit: numbers 1 - 4
-        //The 'set' methods for these properties could have some validation
         private int _value;
         private SuitEnum _suit;
+
+        //FOR SELF ASSESSMENT - the lack of 'set' methods here is an example of encapsulation as other classes cannot modify this class's data other than through the constructor
         public int Value
         {
             get { return _value; }
-            set { if (0 < value && value < 14) _value = value; }
         }
-        public SuitEnum Suit { 
-            get { return _suit; } 
-            set { _suit = value;}
+        public SuitEnum Suit {
+            get { return _suit; }
         }
 
         public Card(int val, SuitEnum suit)
         {
-            Value = val;
-            Suit = suit;
+            if (0 < val && val < 14) _value = val;
+            _suit = suit;
         }
         public Card(int val, int suit)
         {
-            Value = val;
-            Suit = (SuitEnum)suit;
+            if (0 < val && val < 14) _value = val;
+            _suit = (SuitEnum)suit;
         }
         //basic ToString for debugging - didn't bother to add face cards or aces, just used numbers
         public override string ToString()
