@@ -16,8 +16,6 @@ namespace CMP1903M_A01_2223
             {
                 Console.WriteLine("Shuffled Deck");
             }
-            
-
             Console.WriteLine("Dealt {0}",testPack.deal()); //no try-catch as this will never have an empty pack
 
             foreach (Card c in testPack.dealCard(2))

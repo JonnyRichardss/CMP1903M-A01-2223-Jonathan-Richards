@@ -30,13 +30,18 @@ namespace CMP1903M_A01_2223
         }
         public SuitEnum Suit { 
             get { return _suit; } 
-            set { if (SuitEnum.ERROR <= value && value <= SuitEnum.spades) _suit = value;}
+            set { _suit = value;}
         }
 
         public Card(int val, SuitEnum suit)
         {
             Value = val;
             Suit = suit;
+        }
+        public Card(int val, int suit)
+        {
+            Value = val;
+            Suit = (SuitEnum)suit;
         }
         //basic ToString for debugging - didn't bother to add face cards or aces, just used numbers
         public override string ToString()

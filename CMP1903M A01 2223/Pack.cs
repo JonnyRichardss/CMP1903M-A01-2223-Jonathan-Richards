@@ -24,7 +24,7 @@ namespace CMP1903M_A01_2223
             {
                 for (int v = 1; v < 14; v++)
                 {
-                    pack.Add(new Card(v, (SuitEnum)s));
+                    pack.Add(new Card(v, s));
                 }
             }
         }
